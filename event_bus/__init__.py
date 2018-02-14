@@ -1,5 +1,5 @@
 from event_bus.version import VERSION
-
+from event_bus.client import Client
 
 __version__ = VERSION
 
@@ -12,6 +12,14 @@ default_client = None
 
 def emit(*args, **kwargs):
     _proxy('emit', *args, **kwargs)
+
+
+def subscribe(*args, **kwargs):
+    _proxy('subscribe', *args, **kwargs)
+
+
+def unsubscribe(*args, **kwargs):
+    _proxy('unsubscribe', *args, **kwargs)
 
 
 def _proxy(method, *args, **kwargs):

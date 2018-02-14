@@ -1,4 +1,4 @@
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 import json
 
 import requests
@@ -23,25 +23,21 @@ class Requestor:
         data = json.dumps(body, cls=DatetimeSerializer)
         res = self.session.post(self._url(path), data=data, headers=headers)
 
-        if res.status_code == 200:
-            return res
-
-        try:
-            log.debug('received response: %s', res.text)
-            raise APIError(res.status_code, payload['message'])
-        except ValueError:
+        if res.status_code != 200:
+            self.log.debug('received response: %s', res.text)
             raise APIError(res.status_code, res.text)
+
+        return res
 
     def _url(self, path):
         return '{0}/{1}'.format(self.host, path)
 
     def _jwt_token(self):
-        exp = datetime.datetime.utcnow() +
-            datetime.timedelta(seconds=self.jwt_exp_delta_seconds)
+        exp = datetime.utcnow() + timedelta(seconds=self.jwt_exp_delta_seconds)
 
         return jwt.encode(
             {
-                'iss': self.issuer,
+                'iss': self.jwt_issuer,
                 'exp': exp
             },
             self.jwt_secret,

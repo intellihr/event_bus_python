@@ -1,6 +1,6 @@
 version: '3'
 services:
   local:
-    image: python:3.6-alpine
+    build: .
     volumes:
       - .:/usr/src/app

@@ -1,5 +1,5 @@
 from dateutil.tz import tzlocal, tzutc
-from datetime import date, datetime
+from datetime import datetime
 
 
 def guess_timezone(dt):

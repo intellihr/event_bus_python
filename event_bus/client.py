@@ -43,7 +43,7 @@ class Client:
         if tenant:
             msg['tenant'] = tenant
         if user_id:
-            msg['userId'] = user_id
+            msg['user_id'] = user_id
         if meta and isinstance(meta, dict):
             msg['meta'] = meta
 
@@ -52,9 +52,9 @@ class Client:
     def subscribe(self, target_url, *events):
         _require('target_url', target_url, string_types)
         payload = [
-            dict(event: require('event', event, string_types),
-                 service: self.service,
-                 target_url: target_url) for event in events]
+            dict(event=_require('event', event, string_types),
+                 service=self.service,
+                 target_url=target_url) for event in events]
 
         if payload:
             self.requestor.post('event-bus/events/subscribers', payload)
@@ -63,10 +63,9 @@ class Client:
             len(payload), self.service))
 
     def unsubscribe(self, *events):
-        _require('target_url', target_url, string_types)
         payload = [
-            dict(event: require('event', event, string_types),
-                 service: self.service) for event in events]
+            dict(event=_require('event', event, string_types),
+                 service=self.service) for event in events]
 
         if payload:
             self.requestor.post('event-bus/events/subscribers/delete', payload)

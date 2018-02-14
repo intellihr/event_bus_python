@@ -1,0 +1,6 @@
+version: '3'
+services:
+  local:
+    image: python:3.6-alpine
+    volumes:
+      - .:/usr/src/app

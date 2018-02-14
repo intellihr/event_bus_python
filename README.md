@@ -41,6 +41,24 @@ event_data = {
 }
 
 event_bus.emit('test_event', data=event_data)
+
+# emit `test_event` with existing event body and meta
+# the following shows the expected event:
+#   {
+#     "event": "test_event", "user_id": "uuid-123",
+#     "timestamp": "2018-02-14T00:00:00+00:00",
+#     "data": {
+#       "a": 1, "b": 2
+#     },
+#     "meta": {"x": 1}
+#   }
+#
+event_data = {
+  'a': 1
+}
+
+event_bus.emit('test_event', user_id='uuid-123',
+               data=event_data, meta=dict(x=1), b=2)
 ```
 
 

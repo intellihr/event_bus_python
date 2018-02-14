@@ -3,6 +3,8 @@ FROM python:3.6-alpine
 MAINTAINER Soloman Weng "soloman.weng@intellihr.com.au"
 ENV REFRESHED_AT 2018-02-14
 
+RUN apk add --update make && rm -rf /var/cache/apk/*
+
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 

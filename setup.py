@@ -17,7 +17,7 @@ applications.
 install_requires = [
     "requests>=2.18,<3.0",
     "six>=1.11",
-    "PyJWT>=1.5.3",
+    "PyJWT>=2.0.0",
     "python-dateutil>=2.6"
 ]
 
@@ -34,14 +34,8 @@ setup(
     description='intellihr event bus client for python applications',
     classifiers=[
         "Programming Language :: Python",
-        "Programming Language :: Python :: 2",
-        "Programming Language :: Python :: 2.6",
-        "Programming Language :: Python :: 2.7",
-        "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.2",
-        "Programming Language :: Python :: 3.3",
-        "Programming Language :: Python :: 3.4",
-        "Programming Language :: Python :: 3.5",
-        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
     ]
 )

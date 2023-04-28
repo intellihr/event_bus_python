@@ -1,4 +1,4 @@
-FROM python:3.6-alpine
+FROM python:3.7-alpine
 
 MAINTAINER Soloman Weng "soloman.weng@intellihr.com.au"
 ENV REFRESHED_AT 2018-02-14

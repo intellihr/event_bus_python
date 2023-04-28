@@ -47,7 +47,7 @@ class Requestor:
                 'exp': exp
             },
             self.jwt_secret,
-            algorithm='HS256').decode()
+            algorithm='HS256')
 
 
 class APIError(Exception):
